@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="${post.getTitle()}"></title>
+</head>
+<body>
+<div>
+  <p th:text="${post.getId()}"></p>
+  <p th:text="${post.getTitle()}"></p>
+  <p th:text="${post.getTag()}"></p>
+  <p th:text="${post.getDescription()}"></p>
+</div>
+</body>
+</html>
