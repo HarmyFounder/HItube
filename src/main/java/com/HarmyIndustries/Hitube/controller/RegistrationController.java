@@ -1,7 +1,7 @@
 package com.HarmyIndustries.Hitube.controller;
 
-import com.HarmyIndustries.Hitube.entity.Role;
-import com.HarmyIndustries.Hitube.entity.User;
+import com.HarmyIndustries.Hitube.model.Role;
+import com.HarmyIndustries.Hitube.model.User;
 import com.HarmyIndustries.Hitube.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

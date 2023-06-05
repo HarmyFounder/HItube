@@ -1,8 +1,9 @@
 package com.HarmyIndustries.Hitube.controller;
 
-import com.HarmyIndustries.Hitube.entity.Post;
+import com.HarmyIndustries.Hitube.model.Post;
 import com.HarmyIndustries.Hitube.service.PostService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -22,14 +23,16 @@ public class MainController {
         return "greeting";
     }
 
-    @GetMapping("/user/main")
+    @GetMapping("/main")
+    @PreAuthorize("hasAuthority('posts:read')")
     public String getMainPage(Model model) {
         List<Post> posts = postService.getAllPosts();
         model.addAttribute("posts", posts);
         return "main";
     }
 
-    @PostMapping("/admin/addPost")
+    @PostMapping("/addPost")
+    @PreAuthorize("hasAuthority('posts:write')")
     public String addNewPost(@RequestParam String title, String tag, String description, Model model) {
 
         postService.createPost(title, tag, description);
@@ -39,7 +42,8 @@ public class MainController {
         return "main";
     }
 
-    @PostMapping("/user/filter")
+    @PostMapping("/filter")
+    @PreAuthorize("hasAuthority('posts:read')")
     public String getByTag(@RequestParam String filter, Model model) {
         List<Post> posts = postService.getPostsByTag(filter);
         model.addAttribute("posts", posts);

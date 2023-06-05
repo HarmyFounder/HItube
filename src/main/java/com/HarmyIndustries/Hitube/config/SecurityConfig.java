@@ -1,9 +1,13 @@
 package com.HarmyIndustries.Hitube.config;
 
+import com.HarmyIndustries.Hitube.model.Permission;
+import com.HarmyIndustries.Hitube.model.Role;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
+import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -18,6 +22,7 @@ import javax.sql.DataSource;
 
 @Configuration
 @EnableWebMvc
+@EnableGlobalMethodSecurity(prePostEnabled = true)
 public class SecurityConfig {
 
     @Autowired
@@ -29,13 +34,13 @@ public class SecurityConfig {
         UserDetails user = User.withDefaultPasswordEncoder()
                 .username("user")
                 .password("password")
-                .roles("USER")
+                .authorities(Role.USER.getAuthorities())
                 .build();
 
         UserDetails admin = User.withDefaultPasswordEncoder()
                 .username("admin")
                 .password("password")
-                .roles("ADMIN", "USER")
+                .authorities(Role.ADMIN.getAuthorities())
                 .build();
 
         return new InMemoryUserDetailsManager(user, admin);
@@ -48,8 +53,6 @@ public class SecurityConfig {
                 .csrf(csrf -> csrf.disable())
                 .authorizeRequests((requests) -> requests
                         .requestMatchers("/","/registration").permitAll()
-                        .requestMatchers("/user/**").hasRole("USER")
-                        .requestMatchers("/admin/**").hasRole("ADMIN")
                         .anyRequest().authenticated()
 //                        .and()
 //                        .requestMatchers("/user/**").hasRole("USER")
