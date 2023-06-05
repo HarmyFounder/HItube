@@ -1,4 +1,4 @@
-package com.HarmyIndustries.Hitube.entity;
+package com.HarmyIndustries.Hitube.model;
 
 
 import jakarta.persistence.Entity;

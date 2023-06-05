@@ -1,6 +1,6 @@
 package com.HarmyIndustries.Hitube.repository;
 
-import com.HarmyIndustries.Hitube.entity.Post;
+import com.HarmyIndustries.Hitube.model.Post;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
