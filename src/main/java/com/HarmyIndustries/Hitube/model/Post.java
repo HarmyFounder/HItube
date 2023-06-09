@@ -17,6 +17,8 @@ public class Post {
     private String tag;
     private String description;
 
+//    private String filename;
+
 
     public Post() {
     }

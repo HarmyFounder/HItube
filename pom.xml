@@ -55,8 +55,6 @@
       <artifactId>spring-boot-starter-thymeleaf</artifactId>
       <version>3.0.5</version>
     </dependency>
-
-
     <!-- https://mvnrepository.com/artifact/org.postgresql/postgresql -->
     <dependency>
       <groupId>org.postgresql</groupId>

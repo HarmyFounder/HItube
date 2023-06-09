@@ -43,4 +43,12 @@ public class PostController {
         return "redirect:/main";
     }
 
+    @GetMapping("/{id}/link")
+    public String generateLink(Model model, @PathVariable("id")long id){
+        String link = "localhost:8080/posts/" + id;
+        model.addAttribute("link",link);
+        return "link";
+    }
+
+
 }
