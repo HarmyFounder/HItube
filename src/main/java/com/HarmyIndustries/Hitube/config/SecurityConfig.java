@@ -52,13 +52,13 @@ public class SecurityConfig {
         http
                 .csrf(csrf -> csrf.disable())
                 .authorizeRequests((requests) -> requests
-                        .requestMatchers("/","/registration").permitAll()
-                        .anyRequest().authenticated()
+                                .requestMatchers("/", "/registration", "/static").permitAll()
+                                .anyRequest().authenticated()
 //                        .and()
 //                        .requestMatchers("/user/**").hasRole("USER")
                 ).formLogin((form) -> form
-                                .loginPage("/login")
-                                .permitAll())
+                        .loginPage("/login")
+                        .permitAll())
                 .logout((logout) -> logout.permitAll());
         return http.build();
 //                        {
@@ -72,7 +72,7 @@ public class SecurityConfig {
 //                .build();
     }
 
-//    @Bean
+    //    @Bean
 //    public UserDetailsManager users(DataSource dataSource) {
 //        UserDetails user = User.withDefaultPasswordEncoder()
 //                .username("user")
