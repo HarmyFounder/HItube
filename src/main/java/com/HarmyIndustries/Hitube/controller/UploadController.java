@@ -39,8 +39,5 @@ public class UploadController {
         }
         return "upload";
         }
-
-
-
     }
 

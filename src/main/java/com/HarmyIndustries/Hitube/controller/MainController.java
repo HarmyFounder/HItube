@@ -20,7 +20,7 @@ public class MainController {
     private PostService postService;
 
     @GetMapping("/")
-    public String greeting(){
+    public String greeting() {
         return "greeting";
     }
 
