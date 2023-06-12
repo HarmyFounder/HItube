@@ -12,7 +12,7 @@
   <p th:text="${post.getDescription()}"></p>
 </div>
 
-<!--<a th:href="@{/posts/{id}/edit(id=${post.getId()})}">edit!</a>-->
+<a th:href="@{/posts/{id}/edit(id=${post.getId()})}">edit!</a>
 
 <form th:method="DELETE" th:action="@{/posts/{id}(id=${post.getId()})}">
     <input type="submit" value="delete!">
